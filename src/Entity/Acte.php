@@ -24,6 +24,9 @@ class Acte
     #[ORM\OneToMany(mappedBy: 'acte', targetEntity: Sentence::class)]
     private Collection $sentences;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->sentences = new ArrayCollection();
@@ -84,6 +87,18 @@ class Acte
                 $sentence->setActe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
