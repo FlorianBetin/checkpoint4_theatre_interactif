@@ -1,37 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre index{% endblock %}
+{% block title %}Genre
+{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for genre in genres %}
-            <tr>
-                <td>{{ genre.id }}</td>
-                <td>{{ genre.name }}</td>
-                <td>{{ genre.slug }}</td>
-                <td>
-                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<pre>
+        {{ dump(genres) }}
+    </pre>
 
-    <a href="{{ path('app_genre_new') }}">Create new</a>
+	{% for genre in genres %}
+
+		<h2>{{genre.name}}</h2>
+
+		{% for piece in genre.pieces %}
+
+			<div class="card" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{piece.title}}</h5>
+					<p class="card-text">{{piece.description}}</p>
+					<a href="{{ path('app_piece_show', {'slug':piece.slug}) }}" class="btn btn-primary">Assister à la pièce</a>
+				</div>
+			</div>
+
+		{% endfor %}
+
+	{% endfor %}
+
+
 {% endblock %}

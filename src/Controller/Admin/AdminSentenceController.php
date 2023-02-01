@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Sentence;
 use App\Form\SentenceType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/sentence')]
-class SentenceController extends AbstractController
+class AdminSentenceController extends AbstractController
 {
     #[Route('/', name: 'app_sentence_index', methods: ['GET'])]
     public function index(SentenceRepository $sentenceRepository): Response

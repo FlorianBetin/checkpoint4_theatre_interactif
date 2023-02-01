@@ -1,45 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sentence index{% endblock %}
+{% block title %}Bon visionnage
+{% endblock %}
 
 {% block body %}
-    <h1>Sentence index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Background</th>
-                <th>Character_one</th>
-                <th>Character_two</th>
-                <th>Speaker</th>
-                <th>Content</th>
-                <th>Step</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for sentence in sentences %}
-            <tr>
-                <td>{{ sentence.id }}</td>
-                <td>{{ sentence.background }}</td>
-                <td>{{ sentence.characterOne }}</td>
-                <td>{{ sentence.characterTwo }}</td>
-                <td>{{ sentence.speaker }}</td>
-                <td>{{ sentence.content }}</td>
-                <td>{{ sentence.step }}</td>
-                <td>
-                    <a href="{{ path('app_sentence_show', {'id': sentence.id}) }}">show</a>
-                    <a href="{{ path('app_sentence_edit', {'id': sentence.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<pre>
+        {{ dump(sentence) }}
+    </pre>
 
-    <a href="{{ path('app_sentence_new') }}">Create new</a>
+	<a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': sentence.step - 1}) }}" class="btn btn-primary">Précédente</a>
+
+	<a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': sentence.step + 1}) }}" class="btn btn-primary">Suivant</a>
+
 {% endblock %}

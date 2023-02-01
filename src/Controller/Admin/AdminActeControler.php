@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Acte;
 use App\Form\ActeType;
@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/acte')]
-class ActeController extends AbstractController
+class AdminActeController extends AbstractController
 {
-    #[Route('/', name: 'app_acte_index', methods: ['GET'])]
+    #[Route('/', name: 'admin_app_acte_index', methods: ['GET'])]
     public function index(ActeRepository $acteRepository): Response
     {
         return $this->render('acte/index.html.twig', [
