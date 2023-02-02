@@ -3,6 +3,9 @@
 {% block title %}Piece index{% endblock %}
 
 {% block body %}
+
+<a href="{{ path('app_admin') }}">Retour au panneau général</a>
+
     <h1>Piece index</h1>
 
     <table class="table">
@@ -12,7 +15,6 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Slug</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,10 +25,9 @@
                 <td>{{ piece.title }}</td>
                 <td>{{ piece.description }}</td>
                 <td>{{ piece.image }}</td>
-                <td>{{ piece.slug }}</td>
                 <td>
-                    <a href="{{ path('app_piece_show', {'id': piece.id}) }}">show</a>
-                    <a href="{{ path('app_piece_edit', {'id': piece.id}) }}">edit</a>
+                    <a href="{{ path('admin_app_piece_show', {'id': piece.id}) }}">show</a>
+                    <a href="{{ path('admin_app_piece_edit', {'id': piece.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_piece_new') }}">Create new</a>
+    <a href="{{ path('admin_app_piece_new') }}">Create new</a>
 {% endblock %}

@@ -10,13 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/genre')]
-class GenreController extends AbstractController
+class AdminGenreController extends AbstractController
 {
     #[Route('/', name: 'admin_app_genre_index', methods: ['GET'])]
     public function index(GenreRepository $genreRepository): Response
     {
-        return $this->render('genre/index.html.twig', [
+        return $this->render('Admin/genre/index.html.twig', [
             'genres' => $genreRepository->findAll(),
         ]);
     }
@@ -34,7 +35,7 @@ class GenreController extends AbstractController
             return $this->redirectToRoute('admin_app_genre_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('genre/new.html.twig', [
+        return $this->renderForm('Admin/genre/new.html.twig', [
             'genre' => $genre,
             'form' => $form,
         ]);
@@ -43,7 +44,7 @@ class GenreController extends AbstractController
     #[Route('/{id}', name: 'admin_app_genre_show', methods: ['GET'])]
     public function show(Genre $genre): Response
     {
-        return $this->render('genre/show.html.twig', [
+        return $this->render('Admin/genre/show.html.twig', [
             'genre' => $genre,
         ]);
     }
@@ -58,10 +59,10 @@ class GenreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $genreRepository->save($genre, true);
 
-            return $this->redirectToRoute('app_genre_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_app_genre_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('genre/edit.html.twig', [
+        return $this->renderForm('Admin/genre/edit.html.twig', [
             'genre' => $genre,
             'form' => $form,
         ]);
@@ -74,6 +75,6 @@ class GenreController extends AbstractController
             $genreRepository->remove($genre, true);
         }
 
-        return $this->redirectToRoute('app_genre_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_app_genre_index', [], Response::HTTP_SEE_OTHER);
     }
 }

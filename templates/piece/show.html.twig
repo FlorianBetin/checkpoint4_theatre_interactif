@@ -17,7 +17,7 @@
 
 	<div class="blockactesbutton">
 	{% for acte in piece.actes %}
-    <h5 class="h5pieceplayact">{{acte.title}} <a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': acte.sentences.0.step}) }}" class="btn btn-primary">Voir cet acte</a></h5>
+    <h5 class="h5pieceplayact">{{acte.title}} <a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': acte.sentences.0.step}) }}" class="button-29">Voir cet acte</a></h5>
 	{% endfor %}
 	</div>
 </div>

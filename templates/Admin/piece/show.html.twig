@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Piece</h1>
 
+<img src="/uploads/images/piececover/{{ piece.image }}" alt="{{piece.title}}">
+
     <table class="table">
         <tbody>
             <tr>
@@ -30,9 +32,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_piece_index') }}">back to list</a>
+    <a href="{{ path('admin_app_piece_index') }}">back to list</a>
 
-    <a href="{{ path('app_piece_edit', {'id': piece.id}) }}">edit</a>
+    <a href="{{ path('admin_app_piece_edit', {'id': piece.id}) }}">edit</a>
 
-    {{ include('piece/_delete_form.html.twig') }}
+    {{ include('Admin/piece/_delete_form.html.twig') }}
 {% endblock %}

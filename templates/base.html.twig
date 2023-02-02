@@ -18,7 +18,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body>
+	<body id="body">
 		<header>
 			{% include 'Include/_navbar.html.twig' %}
 		</header>
@@ -28,7 +28,7 @@
 					{{ message }}
 				</div>
 			{% endfor %}
-            {% endfor %}
-			{% block body %}{% endblock %}
+		{% endfor %}
+		{% block body %}{% endblock %}
 	</body>
 </html>

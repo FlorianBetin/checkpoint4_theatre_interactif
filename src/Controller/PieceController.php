@@ -5,11 +5,14 @@ namespace App\Controller;
 use App\Entity\Acte;
 use App\Entity\Piece;
 use App\Entity\Sentence;
+use App\Repository\SentenceRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/piece')]
 class PieceController extends AbstractController
 {
@@ -26,23 +29,21 @@ class PieceController extends AbstractController
     #[Entity('piece', options: ['mapping' => ['piece_slug' => 'slug']])]
     #[Entity('acte', options: ['mapping' => ['acte_slug' => 'slug']])]
     #[Entity('sentence', options: ['mapping' => ['sentence_step' => 'step']])]
-    public function showTutoriel(
+    public function showScene(
         Piece $piece,
         Acte $acte,
-        Sentence $sentence
+        Sentence $sentence,
+        SentenceRepository $sentenceRepository
     ): Response {
 
-        if ($sentence->getStep() === null) {
-            return $this->redirectToRoute('piece/show.html.twig',[
-                'piece_slug' => $piece->getSlug(),
-                'acte_slug' => $acte->getSlug()
-            ], Response::HTTP_SEE_OTHER);
-        }
+        
+        $countStep = $sentenceRepository->countStep($acte);
 
         return $this->render('sentence/index.html.twig', [
             'piece' => $piece,
             'acte' => $acte,
             'sentence' => $sentence,
+            'countstep' => $countStep[0][1]
         ]);
     }
 }

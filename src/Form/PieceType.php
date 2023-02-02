@@ -15,8 +15,7 @@ class PieceType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('image')
-            ->add('slug')
-            ->add('genre')
+            // ->add('genre')
         ;
     }
 
