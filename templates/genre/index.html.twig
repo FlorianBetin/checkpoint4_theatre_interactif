@@ -5,28 +5,33 @@
 
 {% block body %}
 
-	<pre>
-        {{ dump(genres) }}
-    </pre>
-
 	{% for genre in genres %}
 
 		<h2>{{genre.name}}</h2>
-
-		{% for piece in genre.pieces %}
-
-			<div class="card" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">{{piece.title}}</h5>
-					<p class="card-text">{{piece.description}}</p>
-					<a href="{{ path('app_piece_show', {'slug':piece.slug}) }}" class="btn btn-primary">Assister à la pièce</a>
-				</div>
+		<div id="carouselExampleCaptions{{genre.id}}" class="carousel carousel-dark slide" data-bs-ride="carousel" >
+			<div class="carousel-inner">
+				{% for piece in genre.pieces %}
+					<div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+						<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}"><img src="/uploads/images/piececover/{{ piece.image }}" class="d-block imggenre" alt="{{piece.title}}"></a>	
+							<span>
+							<h5>{{piece.title}}</h5>
+							</span>
+					</div>
+				{% endfor %}
+				<button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
 			</div>
-
-		{% endfor %}
+		</div>
 
 	{% endfor %}
+
+
 
 
 {% endblock %}

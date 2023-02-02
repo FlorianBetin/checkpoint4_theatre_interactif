@@ -1,7 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
+@import "_global.scss";
+@import "_landing.scss";
+@import "_navbar.scss";
+@import "_genredisplay.scss";
 
 
 
 body {
-    background-color: lightgray;
+    background-color: rgb(247, 247, 247);
 }
