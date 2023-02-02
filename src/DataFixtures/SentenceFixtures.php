@@ -41,7 +41,7 @@ class SentenceFixtures extends Fixture implements DependentFixtureInterface
                 ) {
                     $sentence->setBackground($sentenceDetail['background']);
                 }
-                $file = __DIR__ . '/data/scene_content/' . $sentenceDetail['background'];
+                $file = __DIR__ . '/data/scene_content/' . $sentenceDetail['character_one'];
                 if (
                     copy($file, $this->containerBag->get('upload_directory') .
                         'images/scene_content/' . $sentenceDetail['character_one'])
@@ -51,7 +51,7 @@ class SentenceFixtures extends Fixture implements DependentFixtureInterface
                 // $sentence->setCharacterOne();
                 // $sentence->setCharacterTwo();
                 // $sentence->setSpeaker();
-                $sentence->setContent($faker->paragraphs(2, true));
+                $sentence->setContent($faker->paragraphs(1, true));
                 $sentence->setStep($key + 1);
                 $sentence->setActe($this->getReference('acte_' . $j));
                 $manager->persist($sentence);

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/sentence')]
 class AdminSentenceController extends AbstractController
 {
-    #[Route('/', name: 'app_sentence_index', methods: ['GET'])]
+    #[Route('/', name: 'admin_app_sentence_index', methods: ['GET'])]
     public function index(SentenceRepository $sentenceRepository): Response
     {
         return $this->render('sentence/index.html.twig', [

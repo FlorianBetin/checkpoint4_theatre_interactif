@@ -13,6 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/genre')]
 class GenreController extends AbstractController
 {
+    #[Route('/', name: 'admin_app_genre_index', methods: ['GET'])]
+    public function index(GenreRepository $genreRepository): Response
+    {
+        return $this->render('genre/index.html.twig', [
+            'genres' => $genreRepository->findAll(),
+        ]);
+    }
 
     #[Route('/new', name: 'admin_app_genre_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GenreRepository $genreRepository): Response

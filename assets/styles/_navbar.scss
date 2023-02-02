@@ -1,3 +1,12 @@
 .navbar {
     background-color: grey;
 }
+
+.navicongroup{
+    display: flex;
+    align-content: space-between;
+}
+
+.naviconlink {
+    margin-left: 0.75rem;
+}

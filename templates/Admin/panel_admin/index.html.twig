@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface Admin
+{% endblock %}
+
+{% block body %}
+
+	<h1>Panneau d'administration des contenus</h1>
+
+<table class="adminPanelTable mt-5">
+
+		<thead>
+			<tr>
+				<th>Fonctionnalité</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Genre</td>
+				<td>Gestion des genres</td>
+				<td>
+					<a class="siteButton me-2" href="{{ path('admin_app_genre_index') }}" title="gérer les genres">Gérer</a>
+
+				</td>
+			</tr>
+			<tr>
+				<td>Pieces</td>
+				<td>Gestion des pièces de théatres</td>
+				<td>
+					<a class="siteButton" href="{{ path('admin_app_piece_index') }}" title="gérer les pièces">Gérer</a>
+
+				</td>
+			</tr>
+			<tr>
+				<td>Scènes</td>
+				<td>Gestion des scènes</td>
+				<td>
+					<a class="siteButton" href="{{ path('admin_app_sentence_index') }}" title="gérer les scènes">Gérer</a>
+
+				</td>
+			</tr>
+			{# <tr>
+				<td>Utilisateurs</td>
+				<td>Gestions des utilisateurs</td>
+				<td>
+					<a class="siteButton" href="{{ path('app_user_index') }}" title="gérer les utilisateurs">Gérer</a>
+				</td>
+			</tr> #}
+		</tbody>
+	</table>
+{% endblock %}

@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/piece')]
 class AdminPieceController extends AbstractController
 {
-    #[Route('/', name: 'app_piece_index', methods: ['GET'])]
+    #[Route('/', name: 'admin_app_piece_index', methods: ['GET'])]
     public function index(PieceRepository $pieceRepository): Response
     {
         return $this->render('piece/index.html.twig', [
