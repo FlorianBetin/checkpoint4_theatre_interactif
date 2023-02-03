@@ -30,6 +30,7 @@ class AdminGenreController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $genre->setSlug($genre->getName());
             $genreRepository->save($genre, true);
 
             return $this->redirectToRoute('admin_app_genre_index', [], Response::HTTP_SEE_OTHER);

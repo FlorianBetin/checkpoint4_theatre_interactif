@@ -29,6 +29,7 @@ class AdminPieceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $piece->setSlug($piece->getTitle());
             $pieceRepository->save($piece, true);
 
             return $this->redirectToRoute('admin_app_piece_index', [], Response::HTTP_SEE_OTHER);

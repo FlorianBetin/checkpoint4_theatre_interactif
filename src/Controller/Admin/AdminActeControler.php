@@ -29,6 +29,7 @@ class AdminActeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $acte->setSlug($acte->getTitle());
             $acteRepository->save($acte, true);
 
             return $this->redirectToRoute('app_acte_index', [], Response::HTTP_SEE_OTHER);
