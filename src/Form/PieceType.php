@@ -6,6 +6,7 @@ use App\Entity\Piece;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class PieceType extends AbstractType
 {
@@ -14,10 +15,17 @@ class PieceType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image')
-            ->add('slug')
-            ->add('genre')
-        ;
+            ->add(
+                'genre',
+                null,
+                ['choice_label' => 'name']
+            )
+            ->add('actes', CollectionType::class, [
+                'entry_type' => ActeType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

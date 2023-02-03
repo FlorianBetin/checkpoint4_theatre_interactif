@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Piece{% endblock %}
+
+{% block body %}
+    <h1>Create new Piece</h1>
+
+    {# {{ include('Admin/piece/_form.html.twig') }} #}
+
+    			{{ component('piece_form', {
+				piece: piece,
+
+			}) }}
+
+
+    <a href="{{ path('admin_app_piece_index') }}">back to list</a>
+{% endblock %}

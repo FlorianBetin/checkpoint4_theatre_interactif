@@ -3,15 +3,18 @@
 
 {% block body %}
 
-	<h1>Logo</h1>
-
-	<a class="connexion" title="se connecter" href="{{ path('app_login') }}">
-		<strong>Se connecter</strong>
+<div>
+	<h1 class="planding">Découvrez les grandes pièces de théatres dans un format inédit !</h1>
+	<p class="planding">Grâce à cette application, lisez et vivez les grand textes grâces à nos acteurs, 100 % digitaux</p>
+	<a class="button-29" title="enregistrement" href="{{ path('app_register') }}">
+		S'ENREGISTER
 	</a>
-
-	<a class="connexion" title="enregistrement" href="{{ path('app_register') }}">
-		<strong>S'enregistrer'</strong>
-	</a>
-
-
+</div>
+<div id="carouselExample" class="carousel slide">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="/uploads/images/carrousseldeux.PNG" alt="" class="d-block w-100 imglanding" alt="...">
+		</div>
+	</div>
+</div>
 {% endblock %}

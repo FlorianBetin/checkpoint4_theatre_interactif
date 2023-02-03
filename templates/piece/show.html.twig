@@ -1,38 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Piece{% endblock %}
+{% block title %}Piece
+{% endblock %}
 
 {% block body %}
-    <h1>Piece</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ piece.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ piece.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ piece.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ piece.image }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ piece.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
+<img class="imgpiecedetails" src="/uploads/images/piececover/{{ piece.imageBig }}" alt="{{piece.title}}">
 
-    <a href="{{ path('app_piece_index') }}">back to list</a>
+<div class="pieceplaycorpus">
+	<h1>{{piece.title}}</h1>
 
-    <a href="{{ path('app_piece_edit', {'id': piece.id}) }}">edit</a>
+	<p> <strong>Genre:</strong> {{piece.genre.name}}</p>
 
-    {{ include('piece/_delete_form.html.twig') }}
+
+	<p><strong>Résumé:</strong> <br> {{piece.description}}</p>
+
+	<div class="blockactesbutton">
+	{% for acte in piece.actes %}
+    <h5 class="h5pieceplayact"> <a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': acte.sentences.0.step}) }}" class="button-29">{{acte.title}}</a></h5>
+	{% endfor %}
+	</div>
+</div>
+
 {% endblock %}

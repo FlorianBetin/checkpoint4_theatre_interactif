@@ -14,11 +14,10 @@ class SentenceType extends AbstractType
         $builder
             ->add('background')
             ->add('character_one')
-            ->add('character_two')
-            ->add('speaker')
+            // ->add('character_two')
             ->add('content')
-            ->add('step')
-            ->add('acte')
+            // ->add('step')
+            // ->add('acte')
         ;
     }
 

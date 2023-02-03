@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Acte;
 use App\Entity\Sentence;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Sentence>
@@ -37,6 +38,17 @@ class SentenceRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function countStep(Acte $acte)
+    {
+        return $this->createQueryBuilder('s')
+        ->select('count(s.step)')
+        ->join('s.acte', 'a')
+        ->where('a.id = :acte_id')
+        ->setParameters(['acte_id' => $acte])
+        ->getQuery()
+        ->getResult();
     }
 
 //    /**

@@ -1,7 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
+@import "_global.scss";
+@import "_landing.scss";
+@import "_navbar.scss";
+@import "_genredisplay.scss";
+@import "_scenedisplay.scss";
+@import "_piecedisplay.scss";
+@import "_loginform.scss";
 
 
 
-body {
-    background-color: lightgray;
+#body {
+    font-family: 'Slabo 27px', serif;
+    background-color: rgb(92, 92, 92);
+    color: white;
 }

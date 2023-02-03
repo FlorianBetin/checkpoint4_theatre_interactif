@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LandingController extends AbstractController
 {
+    
     #[Route('/', name: 'app_landing')]
     public function index(): Response
     {

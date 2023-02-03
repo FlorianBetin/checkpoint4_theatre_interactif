@@ -29,6 +29,7 @@ class GenreFixtures extends Fixture
         foreach (self::GENRELIST as $key => $genreInfo) {
             $genre = new Genre();
             $genre->setName($genreInfo['name']);
+            $genre->setSlug($this->slugger->slug($genre->getName()));
             $manager->persist($genre);
             $this->addReference('genre_' . $key, $genre);
             self::$genreIndex++;

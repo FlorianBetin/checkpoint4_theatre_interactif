@@ -1,37 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre index{% endblock %}
+{% block title %}Genre
+{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for genre in genres %}
-            <tr>
-                <td>{{ genre.id }}</td>
-                <td>{{ genre.name }}</td>
-                <td>{{ genre.slug }}</td>
-                <td>
-                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<h1 class="h1genredisplay">Bienvenue
+		{{app.user.nickname}}
+		! Choisi une pièce parmis les genres proposés ci-dessous.</h1>
 
-    <a href="{{ path('app_genre_new') }}">Create new</a>
+	<div class="carousselscontainer">
+		{% for genre in genres %}
+			<div class="carousselcontainer">
+				<h2 class="h2genre">{{genre.name}}</h2>
+				<div id="carouselExampleCaptions{{genre.id}}" class="carousel carousel-dark carousel-fade">
+					<div class="carousel-inner">
+						{% for piece in genre.pieces %}
+							<div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+								<span class="h5titlepiece">
+									<h5>{{piece.title}}</h5>
+								</span>
+								<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}"><img src="/uploads/images/piececover/{{ piece.imageSmall }}" class="d-block imggenre" alt="{{piece.title}}"></a>
+							</div>
+						{% endfor %}
+						<button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+
 {% endblock %}

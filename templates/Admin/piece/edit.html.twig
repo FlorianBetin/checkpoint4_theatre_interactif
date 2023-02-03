@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Piece{% endblock %}
+
+{% block body %}
+    <h1>Edit Piece</h1>
+
+    {# {{ include('Admin/piece/_form.html.twig', {'button_label': 'Update'}) }} #}
+
+			{{ component('piece_form', {
+				piece: piece,
+
+			}) }}
+
+    <a href="{{ path('admin_app_piece_index') }}">back to list</a>
+
+    {{ include('Admin/piece/_delete_form.html.twig') }}
+{% endblock %}
