@@ -6,6 +6,7 @@ use App\Entity\Acte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ActeType extends AbstractType
 {
@@ -13,8 +14,12 @@ class ActeType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('slug')
-            ->add('piece')
+            ->add('sentences', CollectionType::class, [
+                'entry_type' => SentenceType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ]);
         ;
     }
 

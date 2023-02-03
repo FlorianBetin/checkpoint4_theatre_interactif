@@ -1,9 +1,9 @@
-title,image,genre_id
-Le bourgeois gentilhomme,le_bourgeois_gentilhomme.jpg,0
-Les grenouilles,les_grenouilles.jpg,0
-Le Misanthrope,le_mysanthrope.jpg,0
-Le prénom,le_prenom.jpg,0
-Le Cid,le_cid.jpg,1
-Antigone,antigone.jpeg,1
-Phèdre,phedre.jpg,1
-Cyrano de Bergerac,cyrano.jpg,1
+title,image_small,image_big,genre_id
+Le bourgeois gentilhomme,le_bourgeois_gentilhomme_small.PNG,le_bourgeois_gentilhomme_big.PNG,0
+Les grenouilles,les_grenouilles_small.PNG,les_grenouilles_big.PNG,0
+Le Misanthrope,le_mysanthrope_small.PNG,le_mysanthrope_big.PNG,0
+Le prénom,le_prenom_small.PNG,le_prenom_big.PNG,0
+Le Cid,le_cid_small.PNG,le_cid_big.PNG,1
+Antigone,antigone_small.PNG,antigone_big.PNG,1
+Phèdre,phedre_small.PNG,phedre_big.PNG,1
+Cyrano de Bergerac,cyrano_small.PNG,cyrano_big.PNG,1

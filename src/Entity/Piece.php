@@ -23,7 +23,7 @@ class Piece
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    private ?string $imageSmall = null;
 
     #[ORM\ManyToOne(inversedBy: 'pieces')]
     private ?Genre $genre = null;
@@ -33,6 +33,9 @@ class Piece
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageBig = null;
 
     public function __construct()
     {
@@ -68,14 +71,14 @@ class Piece
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImageSmall(): ?string
     {
-        return $this->image;
+        return $this->imageSmall;
     }
 
-    public function setImage(?string $image): self
+    public function setImageSmall(?string $imageSmall): self
     {
-        $this->image = $image;
+        $this->imageSmall = $imageSmall;
 
         return $this;
     }
@@ -130,6 +133,18 @@ class Piece
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getImageBig(): ?string
+    {
+        return $this->imageBig;
+    }
+
+    public function setImageBig(?string $imageBig): self
+    {
+        $this->imageBig = $imageBig;
 
         return $this;
     }

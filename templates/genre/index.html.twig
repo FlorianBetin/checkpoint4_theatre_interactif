@@ -5,33 +5,37 @@
 
 {% block body %}
 
-	{% for genre in genres %}
+	<h1 class="h1genredisplay">Bienvenue
+		{{app.user.nickname}}
+		! Choisi une pièce parmis les genres proposés ci-dessous.</h1>
 
-		<h2>{{genre.name}}</h2>
-		<div id="carouselExampleCaptions{{genre.id}}" class="carousel carousel-dark slide" data-bs-ride="carousel" >
-			<div class="carousel-inner">
-				{% for piece in genre.pieces %}
-					<div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
-						<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}"><img src="/uploads/images/piececover/{{ piece.image }}" class="d-block imggenre" alt="{{piece.title}}"></a>	
-							<span>
-							<h5>{{piece.title}}</h5>
-							</span>
+	<div class="carousselscontainer">
+		{% for genre in genres %}
+			<div class="carousselcontainer">
+				<h2 class="h2genre">{{genre.name}}</h2>
+				<div id="carouselExampleCaptions{{genre.id}}" class="carousel carousel-dark carousel-fade">
+					<div class="carousel-inner">
+						{% for piece in genre.pieces %}
+							<div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+								<span class="h5titlepiece">
+									<h5>{{piece.title}}</h5>
+								</span>
+								<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}"><img src="/uploads/images/piececover/{{ piece.imageSmall }}" class="d-block imggenre" alt="{{piece.title}}"></a>
+							</div>
+						{% endfor %}
+						<button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</div>
-				{% endfor %}
-				<button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions{{genre.id}}" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
+				</div>
 			</div>
-		</div>
-
-	{% endfor %}
-
-
+		{% endfor %}
+	</div>
 
 
 {% endblock %}

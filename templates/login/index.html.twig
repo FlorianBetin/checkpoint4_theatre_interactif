@@ -8,20 +8,22 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
-	<form action="{{ path('app_login') }}" method="post">
-		<div class="d-flex flex-row justify-content-end gap-2 w-100">
-			<label class="w-25" for="username">Email:</label>
+<div class="loginform">
+	<form action="{{ path('app_login') }}" method="post" >
+		<div class="cartouche">
+			<label class="w-25" for="username">Email: </label>
 			<input class="col" type="text" id="username" name="_username" value="{{ last_username }}">
 		</div>
-		<div class="d-flex flex-row justify-content-end gap-2 w-100">
-			<label class="w-25" for="password">Password:</label>
+		<div class="cartouche">
+			<label class="w-25" for="password">Password: </label>
 			<input class="col" type="password" id="password" name="_password">
 		</div>
 
-		<input
+		<input 
 		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				        <input type="hidden" name="_target_path" value="/genre">
 
-		<button class="siteButton m-1 w-50 justify-self-center" type="submit" title="se connecter">Se connecter</button>
+		<button class="button-29"  type="submit" title="se connecter">Se connecter</button>
 	</form>
+</div>
 {% endblock %}

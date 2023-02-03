@@ -7,11 +7,11 @@
 
 	<div class='igmbackgroundsentence' style="background-image: url(/uploads/images/scene_content/{{ sentence.background }})"></div>
 
-	<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}" type="button" class="button-29" role="button" aria-disabled="true">Retour aux scenes</a>
 
 	<img class='imgcharaone' src="/uploads/images/scene_content/{{ sentence.characterOne }}" alt="">
 
 	<div class='scenetxttile'>
+
 
 		<p class="textescene">{{ sentence.content }}</p>
 
@@ -23,7 +23,7 @@
 				</a>
 
 			{% endif %}
-
+				<a href="{{ path('app_piece_show', {'slug': piece.slug}) }}" type="button" class="button-29" role="button" aria-disabled="true">Retour aux scenes</a>
 			{% if sentence.step < countstep %}
 
 				<a href="{{ path('app_piece_play', {'piece_slug': piece.slug, 'acte_slug': acte.slug, 'sentence_step': sentence.step + 1}) }}" class="btn btn btn-warning">
@@ -31,6 +31,7 @@
 				</a>
 
 			{% endif %}
+
 		</div>
 	</div>
 

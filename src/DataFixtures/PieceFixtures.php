@@ -39,12 +39,19 @@ class PieceFixtures extends Fixture implements DependentFixtureInterface
             $piece->setDescription($faker->paragraphs(1, true));
             $piece->setSlug($this->slugger->slug($piece->getTitle()));
             $piece->setGenre($this->getReference('genre_' . $pieceDetail['genre_id']));
-            $file = __DIR__ . '/data/piececover/' . $pieceDetail['image'];
+            $file = __DIR__ . '/data/piececover/' . $pieceDetail['image_small'];
             if (
                 copy($file, $this->containerBag->get('upload_directory') .
-                    'images/piececover/' . $pieceDetail['image'])
+                    'images/piececover/' . $pieceDetail['image_small'])
             ) {
-                $piece->setImage($pieceDetail['image']);
+                $piece->setImageSmall($pieceDetail['image_small']);
+            }
+            $file = __DIR__ . '/data/piececover/' . $pieceDetail['image_big'];
+            if (
+                copy($file, $this->containerBag->get('upload_directory') .
+                    'images/piececover/' . $pieceDetail['image_big'])
+            ) {
+                $piece->setImageBig($pieceDetail['image_big']);
             }
             $this->addReference('piece_' . self::$pieceIndex, $piece);
             self::$pieceIndex++;

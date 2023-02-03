@@ -1,4 +1,5 @@
 .pieceplaycorpus {
+    margin-top: 2%;
     margin-left: 10px;
 }
 
@@ -9,4 +10,20 @@
 .blockactesbutton {
     display: flex;
     flex-direction: column;
+}
+.imgpiecedetails {
+    height: 200px;
+}
+
+@media screen and (min-width: 600px) {
+.imgpiecedetails {
+    height: 20%;
+}
+.blockactesbutton {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 }
